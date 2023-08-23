@@ -182,3 +182,55 @@ def game_dict():
             ]
         }
     }
+
+from basket_ball import (game_dict)
+
+def num_points_per_game(player_name):
+    game_data = game_dict()
+    for team in game_data.values():
+        for player in team["players"]:
+            if player['name'] == player_name:
+                return player_name + "Points per game:" + str(player["points_per_game"])
+            return None
+        
+def player_age(player_name):
+    game_data=game_dict()
+    for team in game_data.values():
+        for player in team["players"]:
+            if player['name'] == player_name :
+                return player["name"] + "Age:" + str(player['age'])
+                    
+def team_colors(team_name):
+    game_data=game_dict()
+    for team in game_data.values():
+        if team["team_name"] == team_name:
+            return team["colors"]
+        
+def team_names():
+    game_data = game_dict()
+    return [game_data["home"]["team_name"], game_data["away"]["team_name"]]
+
+def player_numbers(team_name):
+    game_data = game_dict()
+    for team in game_data.values():
+        if (team["team_name"]) == team_name:
+            return [player["number"] for player in team["players"]]
+        
+def player_numbers(player_name):
+    game_data = game_dict()
+    for team in game_data.values():
+        for player in team["players"]:
+            if player['name'] == player_name:
+                return {
+                    "Name": player["name"],
+                    "number": player["number"],
+                    "position": player["position"],
+                    "points_per_game": player["points_per_game"],
+                    "rebounds_per_game": player["rebounds_per_game"],
+                }
+
+
+
+
+
+                    
